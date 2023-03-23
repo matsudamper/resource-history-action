@@ -16,7 +16,7 @@ fs.writeFileSync(CPU_FILE, '');
 console.log("===================2");
 process.env.RUNNER_TRACKING_ID = "0"
 const options: SpawnOptionsWithoutStdio = {
-    // detached: true,
+    detached: true,
     stdio: [null],
     env: {
         ...process.env,
@@ -24,11 +24,11 @@ const options: SpawnOptionsWithoutStdio = {
     }
 };
 
-const cpuProcess = exec(
-    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'cpu.sh') + " " + "&", null);
-const memoryProcess = exec(
-    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'memory.sh') + " " + "&", null);
+const cpuProcess = spawn(
+    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'cpu.sh') + " " + "&", options);
+const memoryProcess = spawn(
+    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'memory.sh') + " " + "&", options);
 
-// cpuProcess.unref()
-// memoryProcess.unref()
+cpuProcess.unref()
+memoryProcess.unref()
 console.log("===================3");

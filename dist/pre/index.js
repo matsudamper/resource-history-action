@@ -659,14 +659,14 @@ fs.writeFileSync(CPU_FILE, '');
 console.log("===================2");
 process.env.RUNNER_TRACKING_ID = "0";
 const options = {
-    // detached: true,
+    detached: true,
     stdio: [null],
     env: Object.assign(Object.assign({}, process.env), { RUNNER_TRACKING_ID: "0" })
 };
-const cpuProcess = (0, child_process_1.exec)("RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'cpu.sh') + " " + "&", null);
-const memoryProcess = (0, child_process_1.exec)("RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'memory.sh') + " " + "&", null);
-// cpuProcess.unref()
-// memoryProcess.unref()
+const cpuProcess = (0, child_process_1.spawn)("RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'cpu.sh') + " " + "&", options);
+const memoryProcess = (0, child_process_1.spawn)("RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'memory.sh') + " " + "&", options);
+cpuProcess.unref();
+memoryProcess.unref();
 console.log("===================3");
 
 
