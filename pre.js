@@ -1,6 +1,9 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 
+console.log("===========");
+console.log("process.env.MEMORY_FILE=" + process.env.MEMORY_FILE);
+
 fs.writeFileSync(process.env.MEMORY_FILE, '')
 fs.writeFileSync(process.env.CPU_FILE, '')
 
