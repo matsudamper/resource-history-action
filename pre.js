@@ -1,12 +1,11 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 
-for (const key in process.env) {
-    console.log(`${key}=${process.env[key]}`);
-}
+const MEMORY_FILE = "/var/tmp/action-history-memory.txt"
+const CPU_FILE = "/var/tmp/action-history-cpu.txt"
 
-fs.writeFileSync(process.env.MEMORY_FILE, '')
-fs.writeFileSync(process.env.CPU_FILE, '')
+fs.writeFileSync(MEMORY_FILE, '')
+fs.writeFileSync(CPU_FILE, '')
 
 const options = {
     detached: true,
