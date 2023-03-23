@@ -1,7 +1,11 @@
 name: resource history action
 author: matsudamper
 description: Record Linux Machine Resource History
-# inputs
+inputs:
+  interval_seconds:
+    description: 'interval seconds'
+    default: 30
+    required: false
 # outputs
 runs:
   using: "node16"
