@@ -17,8 +17,18 @@ const options = {
 
 // const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
 // const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
-const cpuProcess = exec("nohup", [path.join(__dirname, 'scripts', 'cpu.sh', '&')]);
-const cpuProcess = exec("nohup", [path.join(__dirname, 'scripts', 'memory.sh', '&')]);
+const cpuProcess = exec(
+    "nohup", [path.join(__dirname, 'scripts', 'cpu.sh', '&')], {
+    env: Object.assign(process.env, {
+        RUNNER_TRACKING_ID: ""
+    })
+});
+const cpuProcess = exec(
+    "nohup", [path.join(__dirname, 'scripts', 'memory.sh', '&')], {
+    env: Object.assign(process.env, {
+        RUNNER_TRACKING_ID: ""
+    })
+});
 
 console.log("===================3")
 // fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
