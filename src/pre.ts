@@ -29,6 +29,6 @@ const cpuProcess = spawn(
 const memoryProcess = spawn(
     "nohup", [path.join(__dirname, 'memory.sh')], options);
 
-cpuProcess.unref()
-memoryProcess.unref()
+// cpuProcess.unref()
+// memoryProcess.unref()
 console.log("===================3");

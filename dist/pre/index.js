@@ -665,8 +665,8 @@ const options = {
 };
 const cpuProcess = (0, child_process_1.spawn)("nohup", [path.join(__dirname, 'cpu.sh')], options);
 const memoryProcess = (0, child_process_1.spawn)("nohup", [path.join(__dirname, 'memory.sh')], options);
-cpuProcess.unref();
-memoryProcess.unref();
+// cpuProcess.unref()
+// memoryProcess.unref()
 console.log("===================3");
 
 
