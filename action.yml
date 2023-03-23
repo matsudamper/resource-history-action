@@ -8,6 +8,6 @@ env:
   CPU_FILE: /var/tmp/action-history-cpu.txt
 runs:
   using: "node16"
-  main: scripts/main.js
-  pre: scripts/pre.js
-  post: scripts/post.js
+  main: main.js
+  pre: pre.js
+  post: post.js
