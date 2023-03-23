@@ -1,0 +1,7 @@
+name: Assign Author
+on:
+  push:
+
+jobs:
+  test:
+    uses: matsudamper/resource-history-action@main
