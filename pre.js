@@ -13,9 +13,9 @@ const options = {
     stdio: ['ignore'],
 };
 
-console.log("__dirname=" + __dirname);
-const cpuProcess = spawn('./scripts/cpu.sh', options);
-const memoryProcess = spawn('./scripts/memory.sh', options);
+console.log("__dirname=" + path.join(__dirname, 'scripts', 'cpu.sh'));
+const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
+const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
 
 fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
 fs.appendFileSync(process.env.GITHUB_ENV, 'CPU_PID=' + cpuProcess.pid + "\n")
