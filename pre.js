@@ -10,8 +10,8 @@ const options = {
 };
 
 
-const cpuProcess = spawn('./scripts/cpu.sh', options);
-const memoryProcess = spawn('./scripts/memory.sh', options);
+const cpuProcess = spawn('scripts/cpu.sh', options);
+const memoryProcess = spawn('scripts/memory.sh', options);
 
 fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
 fs.appendFileSync(process.env.GITHUB_ENV, 'CPU_PID=' + cpuProcess.pid + "\n")
