@@ -391,8 +391,10 @@ const options = {
     stdio: [null, null, null],
     env: Object.assign(Object.assign({}, process.env), { RUNNER_TRACKING_ID: "0" })
 };
-const cpuProcess = (0, child_process_1.spawn)('sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} &`], options);
+const cpuProcess = (0, child_process_1.spawn)('sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds} &`], options);
 const memoryProcess = (0, child_process_1.spawn)('sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'memory.sh')} &`], options);
+(0, child_process_1.exec)("sleep 10");
+console.log(`CPU_FILE=${fs.readFileSync(CPU_FILE, 'utf8')}`);
 // cpuProcess.unref()
 // memoryProcess.unref()
 console.log("===================3");
