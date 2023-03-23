@@ -10,8 +10,8 @@ const MEMORY_FILE = "/var/tmp/action-history-memory.txt";
 const CPU_FILE = "/var/tmp/action-history-cpu.txt";
 
 console.log("===================1");
-fs.writeFileSync(MEMORY_FILE, '');
-fs.writeFileSync(CPU_FILE, '');
+fs.writeFileSync(MEMORY_FILE, 'nan\n');
+fs.writeFileSync(CPU_FILE, 'nan\n');
 
 console.log("===================2");
 process.env.RUNNER_TRACKING_ID = "0"
