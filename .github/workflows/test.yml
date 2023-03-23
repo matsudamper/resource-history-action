@@ -4,4 +4,8 @@ on:
 
 jobs:
   test:
-    uses: matsudamper/resource-history-action@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: matsudamper/resource-history-action@main
+      - runs: |
+        sleep 60
