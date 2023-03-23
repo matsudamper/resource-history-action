@@ -17,8 +17,8 @@ cpuLines.unshift({data: 'CPU', header: true});
 const memoryLines: any[] = fs.readFileSync(MEMORY_FILE, 'utf8').split("\n");
 memoryLines.unshift({data: 'Memory', header: true});
 
-console.log("cpuLines=" + cpuLines);
-console.log("memoryLines=" + memoryLines);
+console.log("cpuLines=" + JSON.stringify(cpuLines));
+console.log("memoryLines=" + JSON.stringify(memoryLines));
 
 (async () =>
         await core.summary
