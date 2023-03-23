@@ -3,10 +3,10 @@ author: matsudamper
 description: Record Linux Machine Resource History
 # inputs
 # outputs
-env: 
-  MEMORY_FILE: /var/tmp/action-history-memory.txt
-  CPU_FILE: /var/tmp/action-history-cpu.txt
 runs:
+  env: 
+    MEMORY_FILE: /var/tmp/action-history-memory.txt
+    CPU_FILE: /var/tmp/action-history-cpu.txt
   using: "node16"
   main: main.js
   pre: pre.js
