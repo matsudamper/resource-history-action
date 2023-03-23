@@ -1,8 +1,8 @@
 name: resource history action
 author: matsudamper
 description: Record Linux Machine Resource History
-inputs:
-outputs:
+inputs
+outputs
 env: 
   MEMORY_FILE: /var/tmp/action-history-memory.txt
   CPU_FILE: /var/tmp/action-history-cpu.txt
