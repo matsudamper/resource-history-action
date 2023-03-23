@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import * as path from 'path';
-import {exec, spawn, SpawnOptionsWithoutStdio} from 'child_process';
+import {exec, execSync, spawn, SpawnOptionsWithoutStdio} from 'child_process';
 import * as fs from 'fs';
 
 const intervalSeconds: number = parseInt(core.getInput("interval_seconds"), 10)
@@ -24,8 +24,11 @@ const options: SpawnOptionsWithoutStdio = {
     }
 };
 
-exec(
+execSync(
     `sh -c "RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`);
+
+execSync(
+    `ls`);
 
 const cpuProcess = spawn(
     'sh', ['-c', `"RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`], options);

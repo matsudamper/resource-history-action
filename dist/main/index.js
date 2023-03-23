@@ -391,7 +391,8 @@ const options = {
     // stdio: [null, null, null],
     env: Object.assign(Object.assign({}, process.env), { RUNNER_TRACKING_ID: "0" })
 };
-(0, child_process_1.exec)(`sh -c "RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`);
+(0, child_process_1.execSync)(`sh -c "RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`);
+(0, child_process_1.execSync)(`ls`);
 const cpuProcess = (0, child_process_1.spawn)('sh', ['-c', `"RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`], options);
 const memoryProcess = (0, child_process_1.spawn)('sh', ['-c', `"RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`], options);
 (0, child_process_1.exec)("sleep 10");
