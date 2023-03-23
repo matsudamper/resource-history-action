@@ -9,5 +9,5 @@ env:
 runs:
   using: "node16"
   main: ./scripts/main.sh
-  entrypoint: ./scripts/entrypoint.sh
-  post-entrypoint: ./scripts/post-entrypoint.sh
+  pre: ./scripts/pre.sh
+  post: ./scripts/post.sh
