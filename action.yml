@@ -5,6 +5,6 @@ description: Record Linux Machine Resource History
 # outputs
 runs:
   using: "node16"
-  main: main.js
-  pre: pre.js
-  post: post.js
+  main: dist/main/index.js
+  pre: dist/pre/index.js
+  post: dist/post/index.js
