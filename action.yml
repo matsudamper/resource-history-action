@@ -7,11 +7,7 @@ env:
   MEMORY_FILE: /var/tmp/action-history-memory.txt
   CPU_FILE: /var/tmp/action-history-cpu.txt
 runs:
-  using: "node16"
-  steps:
-    ./scripts/memory.sh &
-    memory_pid=$! >> $GITHUB_ENV
-    ./scripts/cpu.sh &
-    cpu_pid=$! >> $GITHUB_ENV
-  entrypoint: scripts/entrypoint.sh
-  post-entrypoint: scripts/post-entrypoint.sh
+  using: "composite"
+  main: ./scripts/main.sh
+  entrypoint: ./scripts/entrypoint.sh
+  post-entrypoint: ./scripts/post-entrypoint.sh
