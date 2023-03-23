@@ -25,9 +25,9 @@ const options: SpawnOptionsWithoutStdio = {
 };
 
 const cpuProcess = spawn(
-    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'cpu.sh') + " " + "&", options);
+    'sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} &`], options);
 const memoryProcess = spawn(
-    "RUNNER_TRACKING_ID=0 nohup " + path.join(__dirname, 'memory.sh') + " " + "&", options);
+    'sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'memory.sh')} &`], options);
 
 cpuProcess.unref()
 memoryProcess.unref()
