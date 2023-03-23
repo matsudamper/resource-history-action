@@ -662,14 +662,8 @@ const options = {
     stdio: [null],
     env: Object.assign(Object.assign({}, process.env), { RUNNER_TRACKING_ID: "" })
 };
-console.log("process.env.GITHUB_WORKSPACE=" + process.env.GITHUB_WORKSPACE);
-const workspace = process.env.GITHUB_WORKSPACE;
-const actionRef = process.env.GITHUB_ACTION_REF;
-const actionRoot = workspace + "/" + actionRef;
-console.log("actionRoot=" + actionRoot);
-console.log("__dirname=" + __dirname);
-const cpuProcess = (0, child_process_1.spawn)(path.join(actionRoot, 'scripts', 'cpu.sh'), options);
-const memoryProcess = (0, child_process_1.spawn)(path.join(actionRoot, 'scripts', 'memory.sh'), options);
+const cpuProcess = (0, child_process_1.spawn)(path.join(__dirname, 'cpu.sh'), options);
+const memoryProcess = (0, child_process_1.spawn)(path.join(__dirname, 'memory.sh'), options);
 cpuProcess.unref();
 memoryProcess.unref();
 console.log("===================3");
