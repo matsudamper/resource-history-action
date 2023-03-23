@@ -17,12 +17,15 @@ console.log("===================2");
 process.env.RUNNER_TRACKING_ID = "0"
 const options: SpawnOptionsWithoutStdio = {
     // detached: true,
-    stdio: [null, null, null],
+    // stdio: [null, null, null],
     env: {
         ...process.env,
         RUNNER_TRACKING_ID: "0"
     }
 };
+
+exec(
+    `sh -c RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds} &`);
 
 const cpuProcess = spawn(
     'sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds} &`], options);
