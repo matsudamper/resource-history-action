@@ -13,11 +13,6 @@ const options = {
     stdio: ['ignore'],
 };
 
-const files = fs.readdirSync(path.join(__dirname, 'scripts'));
-console.log("files=" + files);
-
-console.log("__dirname=" + path.join(__dirname, 'scripts', 'cpu.sh'));
-
 const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
 const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
 
