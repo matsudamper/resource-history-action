@@ -23,7 +23,7 @@ memoryLines.unshift({data: 'Memory', header: true});
 console.log("cpuLines=" + cpuLines);
 console.log("memoryLines=" + memoryLines);
 
-await core.summary
+core.summary
   .addHeading('Resource Usage')
   .addTable([
     cpuLines,
