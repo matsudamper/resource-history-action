@@ -17,13 +17,13 @@ const options = {
 
 // const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
 // const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
-const cpuProcess = exec(
+const cpuProcess = spawn(
     "nohup", [path.join(__dirname, 'scripts', 'cpu.sh', '&')], {
     env: Object.assign(process.env, {
         RUNNER_TRACKING_ID: ""
     })
 });
-const memoryProcess = exec(
+const memoryProcess = spawn(
     "nohup", [path.join(__dirname, 'scripts', 'memory.sh', '&')], {
     env: Object.assign(process.env, {
         RUNNER_TRACKING_ID: ""
@@ -36,6 +36,6 @@ console.log("===================3")
 
 
 console.log("===================4")
-cpuProcess.unref();
-memoryProcess.unref();
+// cpuProcess.unref();
+// memoryProcess.unref();
 console.log("===================5")
