@@ -23,7 +23,7 @@ const cpuProcess = exec(
         RUNNER_TRACKING_ID: ""
     })
 });
-const cpuProcess = exec(
+const memoryProcess = exec(
     "nohup", [path.join(__dirname, 'scripts', 'memory.sh', '&')], {
     env: Object.assign(process.env, {
         RUNNER_TRACKING_ID: ""
