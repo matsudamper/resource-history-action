@@ -25,6 +25,6 @@ const cpuProcess = spawn(
 const memoryProcess = spawn(
     path.join(__dirname, 'scripts', 'memory.sh'), options);
 
-// cpuProcess.unref()
-// memoryProcess.unref()
+cpuProcess.unref()
+memoryProcess.unref()
 console.log("===================3");

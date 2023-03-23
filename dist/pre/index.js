@@ -101,8 +101,8 @@ const options = {
 };
 const cpuProcess = (0, child_process_1.spawn)(path.join(__dirname, 'scripts', 'cpu.sh'), options);
 const memoryProcess = (0, child_process_1.spawn)(path.join(__dirname, 'scripts', 'memory.sh'), options);
-// cpuProcess.unref()
-// memoryProcess.unref()
+cpuProcess.unref();
+memoryProcess.unref();
 console.log("===================3");
 
 
