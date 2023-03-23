@@ -2742,6 +2742,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const fs = __importStar(__webpack_require__(747));
@@ -2756,15 +2765,17 @@ const cpuLines = fs.readFileSync(CPU_FILE, 'utf8').split("\n");
 cpuLines.unshift({ data: 'CPU', header: true });
 const memoryLines = fs.readFileSync(MEMORY_FILE, 'utf8').split("\n");
 memoryLines.unshift({ data: 'Memory', header: true });
-console.log("cpuLines=" + cpuLines);
-console.log("memoryLines=" + memoryLines);
-core.summary
-    .addHeading('Resource Usage')
-    .addTable([
-    cpuLines,
-    memoryLines
-])
-    .write();
+console.log("cpuLines=" + JSON.stringify(cpuLines));
+console.log("memoryLines=" + JSON.stringify(memoryLines));
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    return yield core.summary
+        .addHeading('Resource Usage')
+        .addTable([
+        cpuLines,
+        memoryLines
+    ])
+        .write();
+}))();
 
 
 /***/ }),
