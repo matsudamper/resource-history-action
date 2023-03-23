@@ -1,4 +1,4 @@
-name: Assign Author
+name: test
 on:
   push:
 
