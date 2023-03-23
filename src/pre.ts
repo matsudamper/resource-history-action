@@ -14,7 +14,7 @@ fs.writeFileSync(MEMORY_FILE, '');
 fs.writeFileSync(CPU_FILE, '');
 
 console.log("===================2");
-
+process.env.RUNNER_TRACKING_ID = ""
 const options: SpawnOptionsWithoutStdio = {
     detached: true,
     stdio: [null],
@@ -25,9 +25,9 @@ const options: SpawnOptionsWithoutStdio = {
 };
 
 const cpuProcess = spawn(
-    path.join(__dirname, 'cpu.sh'), options);
+    "nohup", [path.join(__dirname, 'cpu.sh')], options);
 const memoryProcess = spawn(
-    path.join(__dirname, 'memory.sh'), options);
+    "nohup", [path.join(__dirname, 'memory.sh')], options);
 
 cpuProcess.unref()
 memoryProcess.unref()
