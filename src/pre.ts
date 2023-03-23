@@ -20,10 +20,13 @@ const options: SpawnOptionsWithoutStdio = {
     }
 };
 
+console.log("process.env.GITHUB_WORKSPACE=" + process.env.GITHUB_WORKSPACE)
+
+const workspace = process.env.GITHUB_WORKSPACE as string
 const cpuProcess = spawn(
-    path.join(__dirname, 'scripts', 'cpu.sh'), options);
+    path.join(workspace, 'scripts', 'cpu.sh'), options);
 const memoryProcess = spawn(
-    path.join(__dirname, 'scripts', 'memory.sh'), options);
+    path.join(workspace, 'scripts', 'memory.sh'), options);
 
 cpuProcess.unref()
 memoryProcess.unref()
