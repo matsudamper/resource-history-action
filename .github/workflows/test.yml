@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: matsudamper/resource-history-action@main
       - runs: |
-        sleep 60
+          sleep 60
