@@ -13,7 +13,7 @@ const options = {
     stdio: ['ignore'],
 };
 
-const files = fs.readdirSync(directoryPath);
+const files = fs.readdirSync(".");
 console.log("files=" + files);
 
 console.log("__dirname=" + path.join(__dirname, 'scripts', 'cpu.sh'));
