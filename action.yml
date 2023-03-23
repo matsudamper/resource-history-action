@@ -1,0 +1,36 @@
+name: resource history action
+author: matsudamper
+description: Record Linux Machine Resource History
+inputs:
+outputs:
+env: 
+  MEMORY_FILE: /var/tmp/action-history-memory.txt
+  CPU_FILE: /var/tmp/action-history-cpu.txt
+runs:
+  using: "composite"
+  steps:
+    ./scripts/memory.sh &
+    memory_pid=$! >> $GITHUB_ENV
+    ./scripts/cpu.sh &
+    cpu_pid=$! >> $GITHUB_ENV
+  entrypoint: |
+    touch $MEMORY_FILE
+    touch $CPU_FILE
+  post-entrypoint: |
+    kill $memory_pid
+    kill $cpu_pid
+
+    echo "<table><tr>" >> $GITHUB_STEP_SUMMARY
+    echo "<td>CPU</td>" >> $GITHUB_STEP_SUMMARY
+    while IFS= read -r line; do
+      echo "$line"
+    done < "$CPU_FILE"
+    echo "</tr></table>" >> $GITHUB_STEP_SUMMARY
+
+    echo "<table><tr>" >> $GITHUB_STEP_SUMMARY
+    echo "<td>Memory</td>" >> $GITHUB_STEP_SUMMARY
+    while IFS= read -r line; do
+      echo "<td>$line</td>" >> $GITHUB_STEP_SUMMARY
+    done < "$MEMORY_FILE"
+    echo "</tr></table>" >> $GITHUB_STEP_SUMMARY    
+    
