@@ -1,4 +1,4 @@
-const core = require('@actions/core');
+import * as core from '@actions/core' 
 const github = require('@actions/github');
 const { spawn, exec  } = require('child_process');
 const fs = require('fs');
