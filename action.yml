@@ -7,7 +7,7 @@ env:
   MEMORY_FILE: /var/tmp/action-history-memory.txt
   CPU_FILE: /var/tmp/action-history-cpu.txt
 runs:
-  using: "composite"
+  using: "node16"
   steps:
     ./scripts/memory.sh &
     memory_pid=$! >> $GITHUB_ENV
@@ -33,4 +33,3 @@ runs:
       echo "<td>$line</td>" >> $GITHUB_STEP_SUMMARY
     done < "$MEMORY_FILE"
     echo "</tr></table>" >> $GITHUB_STEP_SUMMARY    
-    
