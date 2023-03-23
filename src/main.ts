@@ -25,12 +25,12 @@ const options: SpawnOptionsWithoutStdio = {
 };
 
 exec(
-    `sh -c RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds} &`);
+    `sh -c "RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`);
 
 const cpuProcess = spawn(
-    'sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds} &`], options);
+    'sh', ['-c', `"RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`], options);
 const memoryProcess = spawn(
-    'sh', ['-c', `RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'memory.sh')} &`], options);
+    'sh', ['-c', `"RUNNER_TRACKING_ID=0 nohup ${path.join(__dirname, 'cpu.sh')} --CPU_FILE=${CPU_FILE} --INTERVAL_SECONDS=${intervalSeconds}" &`], options);
 
 exec("sleep 10")
 

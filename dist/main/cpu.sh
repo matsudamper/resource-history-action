@@ -16,7 +16,7 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-echo NANA >> /var/tmp/action-history-cpu.txt
+echo NANA >> $CPU_FILE
 
 while true; do
   top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}' >> $CPU_FILE
