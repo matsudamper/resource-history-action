@@ -1,3 +1,4 @@
+const path = require('path');
 const { spawn } = require('child_process');
 const fs = require('fs');
 
@@ -12,9 +13,9 @@ const options = {
     stdio: ['ignore'],
 };
 
-
-const cpuProcess = spawn('scripts/cpu.sh', options);
-const memoryProcess = spawn('scripts/memory.sh', options);
+console.log("__dirname=" + __dirname);
+const cpuProcess = spawn('./scripts/cpu.sh', options);
+const memoryProcess = spawn('./scripts/memory.sh', options);
 
 fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
 fs.appendFileSync(process.env.GITHUB_ENV, 'CPU_PID=' + cpuProcess.pid + "\n")
