@@ -1,5 +1,5 @@
 const path = require('path');
-const { spawn } = require('child_process');
+const { spawn, exec } = require('child_process');
 const fs = require('fs');
 
 const MEMORY_FILE = "/var/tmp/action-history-memory.txt"
@@ -15,12 +15,14 @@ const options = {
     stdio: ['ignore'],
 };
 
-const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
-const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
+// const cpuProcess = spawn(path.join(__dirname, 'scripts', 'cpu.sh'), options);
+// const memoryProcess = spawn(path.join(__dirname, 'scripts', 'memory.sh'), options);
+const cpuProcess = exec("nohup", [path.join(__dirname, 'scripts', 'cpu.sh', '&')]);
+const cpuProcess = exec("nohup", [path.join(__dirname, 'scripts', 'memory.sh', '&')]);
 
 console.log("===================3")
-fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
-fs.appendFileSync(process.env.GITHUB_ENV, 'CPU_PID=' + cpuProcess.pid + "\n")
+// fs.appendFileSync(process.env.GITHUB_ENV, 'MEMORY_PID=' + memoryProcess.pid + "\n")
+// fs.appendFileSync(process.env.GITHUB_ENV, 'CPU_PID=' + cpuProcess.pid + "\n")
 
 
 console.log("===================4")
